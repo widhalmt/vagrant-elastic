@@ -1,6 +1,9 @@
 # Elastic Stack Test Environment #
 
-Just use `vagrant up --provision` and you will have a complete Elastic Stack testing environment
+Use the following to get a running instance of the Elastic Stack:
+
+    r10k puppetfile install
+    vagrant up --provision
 
 This is an early version of the test setup and needs more work. For example this uses just a single host and does not provide an Elasticsearch cluster.
 
