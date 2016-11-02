@@ -19,6 +19,10 @@ You can run a single instance by issueing the following command:
 
 This capability is the main reason why some cluster tweaks in `elasticsearch.yml` are missing.
 
+### Logstash configuration ###
+
+You can change the configuration in the `logstash-indexer` directory. This directory is mounted into the boxes and Logstash will automatically reload new configuration after changes.
+
 ## Connecting ##
 
 You can use `vagrant ssh elastic01` to log in to the main node.
