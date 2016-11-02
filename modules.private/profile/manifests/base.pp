@@ -21,6 +21,15 @@ class profile::base {
     enable => false,
   }
 
+  host { 'logstash01':
+    ensure => 'present',
+    ip     => '192.168.5.10',
+  }
+  host { 'logstash02':
+    ensure => 'present',
+    ip     => '192.168.5.20',
+  }
+
   class { 'repos::elastic':
     stage => 'repos',
   }

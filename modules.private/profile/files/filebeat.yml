@@ -3,5 +3,6 @@ filebeat.prospectors:
   paths:
     - /var/log/messages
 output.logstash:
-  hosts: ["localhost:5044"]
+  hosts: ["logstash01:5044","logstash02:5044"]
+  loadbalance: true
 

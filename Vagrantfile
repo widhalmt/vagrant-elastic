@@ -5,6 +5,13 @@ nodes = { 'elastic01'  => {
             :box       => 'centos-7.2-x64-virtualbox',
             :url       => 'http://boxes.netways.org/vagrant/centos/centos-7.2-x64-virtualbox.box',
             :memory    => '3096',
+            :ip     => '192.168.5.10',
+          },
+          'elastic02'  => {
+            :box       => 'centos-7.2-x64-virtualbox',
+            :url       => 'http://boxes.netways.org/vagrant/centos/centos-7.2-x64-virtualbox.box',
+            :memory    => '3096',
+            :ip     => '192.168.5.20',
           },
 }
 
@@ -19,6 +26,7 @@ Vagrant.configure(2) do |config|
       node_config.vm.box = options[:box]
       node_config.vm.hostname = name
       node_config.vm.box_url = options[:url] if options[:url]
+      node_config.vm.network :private_network, :adapter => 2, ip: options[:ip]
       node_config.vm.provider :virtualbox do |vb|
         vb.linked_clone = true if Vagrant::VERSION =~ /^1.8/
         vb.name = name
@@ -29,9 +37,8 @@ Vagrant.configure(2) do |config|
           "--audio", "none",
           "--usb", "on",
           "--usbehci", "off",
-          #"--nic2", "intnet",
-          #"--intnet2", "intnet",
-          #"--macaddress2", options[:mac],
+          "--nic2", "intnet",
+          "--intnet2", "intnet",
         ]
         vb.memory = options[:memory] if options[:memory]
       end
@@ -52,6 +59,9 @@ Vagrant.configure(2) do |config|
     elastic01.vm.network "forwarded_port", guest: 9200, host: 9200
     elastic01.vm.network "forwarded_port", guest: 9600, host: 9600
     elastic01.vm.synced_folder "./logstash-indexer", "/etc/logstash/conf.d"
+  end
+  config.vm.define "elastic02" do |elastic02|
+    elastic02.vm.synced_folder "./logstash-indexer", "/etc/logstash/conf.d"
   end
 
 end
