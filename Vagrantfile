@@ -3,13 +3,13 @@
 #
 nodes = { 'elastic01'  => {
             :box       => 'centos-7.2-x64-virtualbox',
-            :url       => 'http://boxes.netways.org/vagrant/centos/centos-7.2-x64-virtualbox.box',
+            :url       => 'http://boxes.icinga.org/vagrant/centos/centos-7.2-x64-virtualbox.box',
             :memory    => '3096',
             :ip     => '192.168.5.10',
           },
           'elastic02'  => {
             :box       => 'centos-7.2-x64-virtualbox',
-            :url       => 'http://boxes.netways.org/vagrant/centos/centos-7.2-x64-virtualbox.box',
+            :url       => 'http://boxes.icinga.org/vagrant/centos/centos-7.2-x64-virtualbox.box',
             :memory    => '3096',
             :ip     => '192.168.5.20',
           },
