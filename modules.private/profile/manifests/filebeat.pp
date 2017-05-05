@@ -13,6 +13,7 @@ class profile::filebeat {
     ensure => "file",
     notify => Service['filebeat'],
     source => 'puppet:///modules/profile/filebeat.yml',
-    path   => '/etc/filebeat/filebeat.yml'
+    path   => '/etc/filebeat/filebeat.yml',
+    mode => '0640',
   }
 }
