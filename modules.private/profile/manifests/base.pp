@@ -34,5 +34,8 @@ class profile::base {
     stage => 'repos',
   }
 
+  class { 'repos::curator':
+    stage => 'repos',
+  }
 
 }

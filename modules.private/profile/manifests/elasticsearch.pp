@@ -6,6 +6,10 @@ class profile::elasticsearch {
     ensure => 'installed',
   }
 
+  package { "elasticsearch-curator":
+    ensure => 'installed',
+  }
+
   service { "elasticsearch":
     ensure  => 'running',
     enable  => true,
