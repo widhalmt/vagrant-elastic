@@ -41,7 +41,7 @@ class profile::elasticsearch {
   file_line { "elasticsearch_network":
     ensure  => 'present',
     path    => '/etc/elasticsearch/elasticsearch.yml',
-    line    => "network.publish_host: $ipaddress_enp0s8",
+    line    => "network.publish_host: $ipaddress",
     match   => '^network.publish_host:',
     require => Package['elasticsearch'],
     notify  => Service['elasticsearch'],
