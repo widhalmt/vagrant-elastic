@@ -38,4 +38,12 @@ class profile::base {
     stage => 'repos',
   }
 
+  file_line { "selinux-permissive":
+    ensure  => 'present',
+    path    => '/etc/sysconfig/selinux',
+    line    => 'SELINUX=permissive',
+    match   => '^SELINUX=',
+  }
+
+
 }
