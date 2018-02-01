@@ -2,14 +2,14 @@
 # vi: set ft=ruby :
 #
 nodes = { 'elastic01'  => {
-            :box       => 'centos-7.3-x64-virtualbox',
-            :url       => 'http://boxes.icinga.org/vagrant/centos/centos-7.3-x64-virtualbox.box',
+            :box       => 'bento/centos-7.4',
+            #:url       => 'http://boxes.icinga.org/vagrant/centos/centos-7.3-x64-virtualbox.box',
             :memory    => '3096',
             :ip     => '192.168.5.10',
           },
           'elastic02'  => {
-            :box       => 'centos-7.3-x64-virtualbox',
-            :url       => 'http://boxes.icinga.org/vagrant/centos/centos-7.3-x64-virtualbox.box',
+            :box       => 'bento/centos-7.4',
+            #:url       => 'http://boxes.icinga.org/vagrant/centos/centos-7.3-x64-virtualbox.box',
             :memory    => '3096',
             :ip     => '192.168.5.20',
           },
