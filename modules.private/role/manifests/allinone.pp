@@ -4,4 +4,5 @@ class role::allinone {
   include 'profile::kibana'
   include 'profile::filebeat'
   include 'profile::base'
+  include 'profile::redis'
 }
