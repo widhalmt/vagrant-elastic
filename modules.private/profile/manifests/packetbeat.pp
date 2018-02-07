@@ -13,6 +13,7 @@ class profile::packetbeat {
     ensure => "file",
     notify => Service['packetbeat'],
     source => 'puppet:///modules/profile/packetbeat.yml',
+    require => Package['packetbeat'],
     path   => '/etc/packetbeat/packetbeat.yml',
     mode => '0640',
   }

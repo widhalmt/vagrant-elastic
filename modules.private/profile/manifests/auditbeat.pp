@@ -12,6 +12,7 @@ class profile::auditbeat {
   file { "auditbeat.yml":
     ensure => "file",
     notify => Service['auditbeat'],
+    require => Package['auditbeat'],
     source => 'puppet:///modules/profile/auditbeat.yml',
     path   => '/etc/auditbeat/auditbeat.yml',
     mode => '0640',
