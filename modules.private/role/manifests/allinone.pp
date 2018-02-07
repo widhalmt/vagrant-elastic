@@ -6,4 +6,5 @@ class role::allinone {
   include 'profile::redis'
   include 'profile::filebeat'
   include 'profile::auditbeat'
+  include 'profile::packetbeat'
 }
