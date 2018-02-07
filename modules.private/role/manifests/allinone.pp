@@ -7,4 +7,5 @@ class role::allinone {
   include 'profile::filebeat'
   include 'profile::auditbeat'
   include 'profile::packetbeat'
+  include 'profile::cerebro'
 }

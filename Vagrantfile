@@ -58,6 +58,7 @@ Vagrant.configure(2) do |config|
     elastic01.vm.network "forwarded_port", guest: 5601, host: 5601
     elastic01.vm.network "forwarded_port", guest: 9200, host: 9200
     elastic01.vm.network "forwarded_port", guest: 9600, host: 9600
+    elastic01.vm.network "forwarded_port", guest: 9000, host: 9000
     elastic01.vm.synced_folder "./logstash-shipper", "/etc/logstash/conf.d"
     elastic01.vm.synced_folder "./logstash-indexer", "/etc/logstash/indexer-conf.d"
   end
