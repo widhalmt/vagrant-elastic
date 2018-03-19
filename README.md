@@ -18,11 +18,13 @@ This environment was built for:
 * Having a test environment while updateing the slides for the Netways [Elastic Stack Training](https://www.netways.de/produkte/elastic_stack/). This is not used during the trainings because installation and configuration is part of them.
 * Having a dev / test environment for the [check_logstash](https://github.com/widhalmt/check_logstash) monitoring plugin.
 * Having an easy to use environment during support sessions
-* Giving other users a quick and easy way to try Elastic Stack 5
+* Giving other users a quick and easy way to try Elastic Stack 6
 
 Maybe this project will mature into a best-practice showcase if people are interested.
 
 The Puppet code is not as nice as it could be. e.g. there is heavy usage of `file_line` instead of templates. This is due to the fact that it should show what has to be changed from a default installation to get a working setup and maybe later get a best-practice setup.
+
+The Redis is mostly used to show the power of the multipipeline feature. You don't need it for a setupt with only beats but you will want it if you collect SNMP Traps, Syslog via UDP or anything else that can't deal with backpressure.
 
 ## Usage ##
 

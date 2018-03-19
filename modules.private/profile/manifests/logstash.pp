@@ -8,16 +8,17 @@ class profile::logstash {
   }
 
 
-  exec { "create_logstash_service":
-    command => '/usr/share/logstash/bin/system-install',
-    require => Package['logstash'],
-    creates => '/etc/systemd/system/logstash.service',
-  }
+#  exec { "create_logstash_service":
+#    command => '/usr/share/logstash/bin/system-install',
+#    require => Package['logstash'],
+#    creates => '/etc/systemd/system/logstash.service',
+#  }
 
   service { "logstash":
     ensure  => 'running',
     enable  => true,
-    require => Exec['create_logstash_service'],
+#    require => Exec['create_logstash_service'],
+    require => Package['logstash'],
   }
 
   file_line { "logstash_config_reload":
@@ -25,6 +26,7 @@ class profile::logstash {
     line => 'config.reload.automatic: true',
     match => '^config.reload.automatic:',
     notify => Service['logstash'],
+    require => Package['logstash'],
   }
 
   file_line { "logstash_api":
@@ -32,5 +34,21 @@ class profile::logstash {
     line => 'http.host: "0.0.0.0"',
     match => '^http.host:',
     notify => Service['logstash'],
+    require => Package['logstash'],
+  }
+  file_line { "logstash_pipelines":
+    path => '/etc/logstash/logstash.yml',
+    line => '#path.config: /etc/logstash/conf.d/*.conf',
+    match => 'path.config',
+    notify => Service['logstash'],
+    require => Package['logstash'],
+  }
+  file { "pipelines.yml":
+    ensure => "file",
+    notify => Service['logstash'],
+    source => 'puppet:///modules/profile/pipelines.yml',
+    path   => '/etc/logstash/pipelines.yml',
+    mode => '0644',
+    require => Package['logstash'],
   }
 }

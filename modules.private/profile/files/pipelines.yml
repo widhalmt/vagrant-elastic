@@ -1,0 +1,5 @@
+- pipeline.id: shipper
+  path.config: "/etc/logstash/conf.d"
+  pipeline.workers: 2
+- pipeline.id: indexer
+  path.config: "/etc/logstash/indexer-conf.d"

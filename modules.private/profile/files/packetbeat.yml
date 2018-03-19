@@ -1,0 +1,24 @@
+packetbeat.interfaces.device: any
+packetbeat.flows:
+  timeout: 30s
+  period: 10s
+packetbeat.protocols:
+- type: icmp
+  enabled: true
+- type: dns
+  ports: [53]
+  include_authorities: true
+  include_additionals: true
+- type: redis
+  ports: [6379]
+- type: nfs
+  ports: [2049]
+- type: tls
+  ports: [443]
+setup.template.settings:
+  index.number_of_shards: 2
+setup.dashboards.enabled: true
+setup.kibana:
+  host: "localhost:5601"
+output.elasticsearch:
+  hosts: ["localhost:9200"]
