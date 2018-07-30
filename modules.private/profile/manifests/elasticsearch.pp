@@ -54,6 +54,16 @@ class profile::elasticsearch {
     match => '^vm.max_map_count',
   }
 
+  file_line { "xpack.monitoring.collection.enabled":
+    ensure  => 'present',
+    path    => '/etc/elasticsearch/elasticsearch.yml',
+    line    => 'xpack.monitoring.collection.enabled: true',
+    match   => '^xpack.monitoring.collection.enabled',
+    require => Package['elasticsearch'],
+    notify  => Service['elasticsearch'],
+  }
+
+
   exec { "set_max_map_count":
     command => 'echo 262144 > /proc/sys/vm/max_map_count',
     path    => '/bin',
