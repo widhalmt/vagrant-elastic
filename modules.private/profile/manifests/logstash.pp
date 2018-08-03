@@ -43,10 +43,17 @@ class profile::logstash {
     notify => Service['logstash'],
     require => Package['logstash'],
   }
-  file_line { "logstash_monitoring":
+  file_line { "logstash_monitoring_elasticsearch":
     path => '/etc/logstash/logstash.yml',
     line => 'xpack.monitoring.elasticsearch.url: ["http://logstash01:9200", "http://logstash02:9200"]',
     match => '^xpack.monitoring.elasticsearch.url:',
+    notify => Service['logstash'],
+    require => Package['logstash'],
+  }
+  file_line { "logstash_monitoring":
+    path => '/etc/logstash/logstash.yml',
+    line => 'xpack.monitoring.enabled: true',
+    match => '^xpack.monitoring.enabled',
     notify => Service['logstash'],
     require => Package['logstash'],
   }

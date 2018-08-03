@@ -10,5 +10,5 @@ output.logstash:
   loadbalance: true
 xpack.monitoring.enabled: true
 xpack.monitoring.elasticsearch:
-  hosts: ["logstash01:9200","logstash02.9200"]
+  hosts: ["logstash01:9200","logstash02:9200"]
   compression_level: 0
